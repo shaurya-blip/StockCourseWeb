@@ -1,4 +1,4 @@
 # StockCourseWeb
 A Stock Course Website!
 
-![Website screenie](https://raw.githubusercontent.com/shaurya-blip/StockCourseWeb/master/websitescreenshot.png)
+![Website screenie](https://github.com/shaurya-blip/StockCourseWeb/blob/master/websitescreenshot.png?raw=true)
