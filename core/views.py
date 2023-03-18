@@ -21,9 +21,10 @@ def register_request(request):
 	return render(request=request, template_name="core/register.html", context={"register_form": form})
 
 
-class IndexView(TemplateView):
-    template_name = 'core/index.html'
-
+def IndexView(request):
+    if request.user.is_anonymous:
+       return render(request, 'core/index.html')
+    return render(request, "core/index-auth.html")
 
 def login_request(request):
 	if request.method == "POST":
@@ -35,10 +36,15 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("main:homepage")
+				return redirect("index")
 			else:
 				messages.error(request, "Invalid username or password.")
 		else:
 			messages.error(request, "Invalid username or password.")
 	form = AuthenticationForm()
 	return render(request=request, template_name="core/login.html", context={"login_form": form})
+
+def logout_request(request):
+	logout(request)
+	messages.info(request, "You have successfully logged out.") 
+	return redirect("index")

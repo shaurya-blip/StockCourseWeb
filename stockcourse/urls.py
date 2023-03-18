@@ -19,7 +19,8 @@ from core import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', views.IndexView.as_view(), name='index'),
+    path('', views.IndexView, name='index'),
     path("register/", views.register_request, name="register"),
     path("login/", views.login_request, name="login"),
+    path("logout/", views.logout_request, name="logout"),
 ]
